@@ -1,0 +1,23 @@
+# H2 Database
+spring.datasource.url=jdbc:h2:mem:messagingdb
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# JPA
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=true
+
+# H2 Console
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+# App
+server.port=8082
+
+# AWS
+aws.region=your-region
+aws.accessKeyId=your-access-key
+aws.secretAccessKey=your-secret-key
+aws.sqs.queueUrl=your-sqs-queue-url
