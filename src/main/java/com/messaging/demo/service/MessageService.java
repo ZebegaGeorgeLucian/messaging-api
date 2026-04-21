@@ -1,5 +1,6 @@
 package com.messaging.demo.service;
 
+import com.messaging.demo.aws.SqsService;
 import com.messaging.demo.dto.MessageRequestDto;
 import com.messaging.demo.dto.MessageResponseDto;
 import com.messaging.demo.exception.MessageNotFoundException;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class MessageService {
     private final MessageRepository messageRepository;
+    private final SqsService sqsService;
 
     public MessageResponseDto sendMessage(MessageRequestDto request){
         log.info("Queueing meessage from {} to {} via {}",
@@ -34,6 +36,7 @@ public class MessageService {
 
         Message saved = messageRepository.save(message);
         log.info("Message saved with id: {}", saved.getId());
+        sqsService.queueMessage(toResponseDto(saved));
 
         return toResponseDto(saved);
     }
