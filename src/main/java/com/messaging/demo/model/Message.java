@@ -39,6 +39,7 @@ public class Message {
     @Column(nullable = false)
     private MessageChannel channel;
 
+    @Column(length = 2048)
     private String mediaUrl;
 
     @Column(nullable = false, updatable = false)
