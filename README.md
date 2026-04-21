@@ -14,11 +14,10 @@ MMS messages support media attachments stored in AWS S3, served via presigned UR
 that expire after one hour for secure access.
 
 ## Architecture
-Client → REST API → H2 Database (QUEUED)
-→ AWS SQS Queue
-↓
+Client-> REST API-> H2 Database (QUEUED)-> AWS SQS Queue
+->
 Message Worker (polls every 5s)
-↓
+->
 H2 Database (SENT)
 
 The API never blocks waiting for delivery — it saves the message, pushes it to SQS,
